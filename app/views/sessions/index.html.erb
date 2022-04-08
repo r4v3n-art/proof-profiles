@@ -1,2 +1,8 @@
 <h1>Sessions#index</h1>
-<p>Find me in app/views/sessions/index.html.erb</p>
+<div data-controller="wallet">
+  <%= form_with url: sessions_path, method: :post, data: {'wallet-target' => 'form'} do |form| %>
+    <%= form.hidden_field :address, data: {'wallet-target' => 'address'} %>
+    <%= form.hidden_field :sig, data: {'wallet-target' => 'sig' } %>
+    <%= form.button 'Connect Metamask',  data: {'action' => "wallet#establishConnection"} %>
+  <% end %>
+</div>
