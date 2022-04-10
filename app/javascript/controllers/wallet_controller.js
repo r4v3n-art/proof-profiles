@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { ethers } from 'ethers';
 
 export default class extends Controller {
-  static targets = [ "form", "address", "sig" ]
+  static targets = [ "form", "address", "sig", "message", "nonce" ]
 
   establishConnection(event) {
     event.preventDefault();
@@ -23,7 +23,7 @@ export default class extends Controller {
       Please sign this transaction with an account
       with a valid PROOF collective NFT to sign in
 
-      timestamp:${new Date().toISOString()}
+      nonce:<${this.nonceTarget.value}>
     `
     await ethereum.request({ method: 'eth_requestAccounts' });
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -31,13 +31,13 @@ export default class extends Controller {
     const signature = await signer.signMessage(message);
     const address = await signer.getAddress();
 
-    console.log(message, signature, address);
-    this.setValuesAndSubmit(address, signature);
+    this.setValuesAndSubmit(address, signature, message);
   }
 
-  setValuesAndSubmit(address, sig) {
+  setValuesAndSubmit(address, sig, message) {
     this.sigTarget.value = sig;
     this.addressTarget.value = address;
+    this.messageTarget.value = message;
 
     this.formTarget.submit();
   }
