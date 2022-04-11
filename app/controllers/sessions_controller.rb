@@ -4,8 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if valid_nonce? && valid_sig?
-      #todo verify proof card in wallet of params[:address]
+    if valid_nonce? && valid_sig? && is_proof_member?
       render plain: 'successful login'
     else
       head 401
@@ -24,5 +23,10 @@ class SessionsController < ApplicationController
     )
 
     Eth::Utils.public_key_to_address(recovered_key) == params[:address]
+  end
+
+  def is_proof_member?
+    service = EtherscanService.new(api_key: Rails.application.credentials.etherscan.api_key)
+    service.is_proof_member?(params[:address])
   end
 end
