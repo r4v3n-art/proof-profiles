@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         user.save
         session[:user_id] = user.id
 
-        redirect_to edit_user_path(user)
+        redirect_to edit_user_path(user.eth_address)
       end
     else
       render plain: 'no proof pass detected', status: :unauthorized

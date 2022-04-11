@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   private
 
   def authorize
-    head 401 if params[:id] != current_user.id.to_s
+    head 401 if params[:address] != current_user.eth_address
   end
 
   def user_params
@@ -30,6 +30,6 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    @user = User.find(params[:id])
+    @user = User.find_by(eth_address: params[:address])
   end
 end
