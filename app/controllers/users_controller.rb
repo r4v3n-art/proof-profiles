@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   before_action :authorize, only: [:edit, :update]
   before_action :find_user, except: :index
 
-  def index;end
+  def index
+    @users = User.all
+  end
 
   def show;end
 

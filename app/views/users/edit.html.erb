@@ -1,8 +1,9 @@
-<h1>Edit User</h1>
+<h1>Edit Member</h1>
 <%= form_with model:  @user do |form| %>
   <div>
     <%= label :bio, t('prompts.user.bio') %>
   </div>
   <%= form.text_area :bio %>
   <%= form.submit %>
+  <%= link_to 'Back', users_path %>
 <% end %>

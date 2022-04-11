@@ -26,6 +26,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session[:user_id] = nil
+
+    redirect_to root_url
+  end
+
   private
   def valid_nonce?
     nonce = params[:message][/.*<([^>]*)/,1]
