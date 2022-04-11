@@ -32,3 +32,6 @@
 en:
   errors:
     invalid_eth_address: 'must be a valid ETH address'
+  prompts:
+    user:
+      bio: 'Bio'

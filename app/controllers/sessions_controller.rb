@@ -1,13 +1,28 @@
 class SessionsController < ApplicationController
   def index
-    session[:nonce] = SecureRandom.hex(10)
+    if current_user
+      redirect_to users_path
+    else
+      session[:nonce] = SecureRandom.hex(10)
+    end
   end
 
   def create
     if valid_nonce? && valid_sig? && is_proof_member?
-      render plain: 'successful login'
+      user = User.find_or_initialize_by(eth_address: params[:address])
+
+      if user.persisted?
+        session[:user_id] = user.id
+
+        redirect_to users_path
+      else
+        user.save
+        session[:user_id] = user.id
+
+        redirect_to edit_user_path(user)
+      end
     else
-      head 401
+      render plain: 'no proof pass detected', status: :unauthorized
     end
   end
 
