@@ -10,6 +10,47 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+
+/* Shared
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+body {
+  width: 100%;
+  height:100vh;
+  background-image: linear-gradient(#f2ced4, #a2b4f8);
+}
+
+.button {
+  border-radius: 100px;
+}
+
+button.button-primary {
+  background-color: #6366f1;
+  border-color: #6366f1;
+}
+
+img {
+  width: 100%;
+}
+
+/* Sections
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.section {
+  padding: 8rem 0 7rem;
+  text-align: center;
+}
+
+.section-heading,
+.section-description {
+  margin-bottom: 1.2rem;
+}
+
+/* Hero
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.hero .row {
+  display: flex;
+  align-items: center;
+}
+
  *= require_tree .
  *= require_self
  */

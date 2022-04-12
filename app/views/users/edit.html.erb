@@ -1,9 +1,15 @@
 <h1>Edit Member</h1>
-<%= form_with model:  @user do |form| %>
-  <div>
-    <%= label :bio, t('prompts.user.bio') %>
-  </div>
-  <%= form.text_area :bio %>
-  <%= form.submit %>
-  <%= link_to 'Back', users_path %>
-<% end %>
+<div class='row'>
+  <%= form_with model:  @user, url: user_path(@user.eth_address) do |form| %>
+    <div class='column'>
+      <div class='one-half column'>
+        <%= label :bio, t('prompts.user.bio') %>
+        <%= form.text_area :bio, maxlength: 140 %>
+      </div>
+    </div>
+    <div class='column'>
+      <%= form.submit "Update", class: 'button-primary' %>
+      <%= link_to 'Back', users_path%>
+    </div>
+  <% end %>
+</div>

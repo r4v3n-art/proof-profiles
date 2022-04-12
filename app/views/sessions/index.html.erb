@@ -1,10 +1,21 @@
-<h1>PROOF Profiles</h1>
-<div data-controller="wallet">
-  <%= form_with url: sessions_path, method: :post, data: {'wallet-target' => 'form'} do |form| %>
-    <%= form.hidden_field :address, data: {'wallet-target' => 'address'} %>
-    <%= form.hidden_field :sig, data: {'wallet-target' => 'sig' } %>
-    <%= form.hidden_field :message, data: {'wallet-target' => 'message' } %>
-    <%= form.hidden_field :nonce, data: {'wallet-target' => 'nonce' }, value: session[:nonce] %>
-    <%= form.button 'Connect Metamask',  data: {'action' => "wallet#establishConnection"} %>
-  <% end %>
+<div class='section hero'>
+  <div class='row'>
+    <div class='one-half column'>
+      <h1 class='hero=heading'>PROOF Profiles</h1>
+      <h5 class='hero-heading'>An unofficial PROOF Collective community networking project</h5>
+      <p><b>PROOF Collective Members Only</b></p>
+      <div data-controller="wallet">
+        <%= form_with url: sessions_path, method: :post, data: {'wallet-target' => 'form'} do |form| %>
+          <%= form.hidden_field :address, data: {'wallet-target' => 'address'} %>
+          <%= form.hidden_field :sig, data: {'wallet-target' => 'sig' } %>
+          <%= form.hidden_field :message, data: {'wallet-target' => 'message' } %>
+          <%= form.hidden_field :nonce, data: {'wallet-target' => 'nonce' }, value: session[:nonce] %>
+          <%= form.button 'Connect Metamask',  data: {'action' => "wallet#establishConnection"}, class: 'button-primary' %>
+        <% end %>
+      </div>
+    </div>
+    <div class='one-half column'>
+      <%= image_tag 'kro-duck' %>
+    </div>
+  </div>
 </div>

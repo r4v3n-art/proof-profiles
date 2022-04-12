@@ -34,4 +34,4 @@ en:
     invalid_eth_address: 'must be a valid ETH address'
   prompts:
     user:
-      bio: 'Bio'
+      bio: 'About (140 Characters Max)'

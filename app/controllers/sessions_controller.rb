@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
       params[:message].delete("\r"), params[:sig]
     )
 
-    Eth::Utils.public_key_to_address(recovered_key) == params[:address]
+    Eth::Utils.public_key_to_address(recovered_key).downcase == params[:address].downcase
   end
 
   def is_proof_member?
