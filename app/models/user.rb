@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_one_attached :pfp do |attachable|
+    attachable.variant :grid, resize_to_limit: [500, 500]
+  end
+
   validates :eth_address, presence: true, uniqueness: true
   validates :bio, length: { maximum: 140 }
   validate :valid_eth_address?

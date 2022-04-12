@@ -32,6 +32,7 @@ img {
   width: 100%;
 }
 
+
 /* Sections
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .section {
@@ -49,6 +50,25 @@ img {
 .hero .row {
   display: flex;
   align-items: center;
+}
+
+.users-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.user-block {
+  color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+  background: #8091d3;
+  padding: 20px;
+}
+
+.user-block h4 {
+  overflow-wrap: break-word;
 }
 
  *= require_tree .

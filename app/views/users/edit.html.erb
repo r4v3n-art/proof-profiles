@@ -3,6 +3,11 @@
   <%= form_with model:  @user, url: user_path(@user.eth_address) do |form| %>
     <div class='column'>
       <div class='one-half column'>
+        <% if @user.pfp.representable? %>
+          <%= image_tag @user.pfp.representation(resize_to_limit: [500, 500]) %>
+        <% end %>
+        <%= label :pfp, t('prompts.user.pfp') %>
+        <%= form.file_field :pfp %>
         <%= label :bio, t('prompts.user.bio') %>
         <%= form.text_area :bio, maxlength: 140 %>
       </div>

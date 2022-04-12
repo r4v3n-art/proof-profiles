@@ -1,12 +1,19 @@
 <h1>Members</h1>
 <%= link_to 'Edit Profile', edit_user_path(current_user.eth_address) %>
 <%= link_to 'Log out', sessions_path, data: { turbo_method: :delete } %>
-<div class='users-container'>
+<div class='users-container row'>
   <% @users.each do |user| %>
-    <div class='user-block'>
-      <h5><%= user.eth_address %></h5>
+    <% 5.times do %>
+    <div class='user-block column one-third'>
+        <% if user.pfp.representable? %>
+          <%= image_tag user.pfp.representation(resize_to_limit: [500, 500]) %>
+        <% else %>
+            <%= image_tag 'kro-duck', width: 500 %>
+        <% end %>
+      <h4><%= user.eth_address %></h4>
       <p><%= user.bio %></p>
     </div>
+  <% end %>
   <% end %>
 </div>
 
