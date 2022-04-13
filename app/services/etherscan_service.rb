@@ -13,10 +13,30 @@ class EtherscanService
       address: address
     )
 
-    if response.dig('result')&.last&.dig('to')&.downcase == address.downcase
+    transactions = response.dig('result')
+
+    inCount = 0
+    outCount = 0
+
+    transactions.each do |child|
+      toAddress = child.dig('to').downcase
+      fromAddress = child.dig('from').downcase
+
+
+      if toAddress == address.downcase
+        inCount += 1
+      end
+      if fromAddress == address.downcase
+        outCount += 1
+      end
+    end
+
+    if inCount > outCount
       true
+      print 'true'
     else
       false
+      print 'false'
     end
   end
 
