@@ -40,6 +40,7 @@ en:
   prompts:
     edit_profile: 'Edit Profile'
     logout: 'Log out'
+    contribute: 'Contribute'
     user:
       pfp: 'Profile Picture (Real picture if your comfortable)'
       bio: 'About (140 Characters Max)'
