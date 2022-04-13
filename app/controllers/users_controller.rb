@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :find_user, except: :index
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show;end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:bio, :pfp)
+    params.require(:user).permit(:bio, :pfp, :name, :twitter_username, :discord_username)
   end
 
   def find_user

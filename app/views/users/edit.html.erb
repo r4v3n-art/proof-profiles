@@ -1,20 +1,26 @@
 <h1>Edit Member</h1>
-<div class='row'>
+<div class='row user-edit'>
   <%= form_with model:  @user, url: user_path(@user.eth_address) do |form| %>
     <div class='column'>
       <div class='one-half column'>
+        <%= label :name, t('prompts.user.name') %>
+        <%= form.text_field :name, maxlength: 60 %>
         <% if @user.pfp.representable? %>
-          <%= image_tag @user.pfp.representation(resize_to_limit: [500, 500]) %>
+          <%= image_tag @user.pfp.representation(resize_to_limit: [200, 200])%>
         <% end %>
         <%= label :pfp, t('prompts.user.pfp') %>
         <%= form.file_field :pfp %>
+        <%= label :twitter_username, t('prompts.user.twitter_username') %>
+        <%= form.text_field :twitter_username, maxlength: 20 %>
+        <%= label :discord_username, t('prompts.user.discord_username') %>
+        <%= form.text_field :discord_username, maxlength: 20 %>
         <%= label :bio, t('prompts.user.bio') %>
-        <%= form.text_area :bio, maxlength: 140 %>
+        <%= form.text_area :bio, maxlength: 140, class: 'u-full-width' %>
       </div>
     </div>
     <div class='column'>
-      <%= form.submit "Update", class: 'button-primary' %>
-      <%= link_to 'Back', users_path%>
+      <%= form.submit t('actions.update'), class: 'button-primary' %>
+      <%= link_to t('actions.back'), users_path%>
     </div>
   <% end %>
 </div>

@@ -19,6 +19,10 @@ body {
   background-image: linear-gradient(#f2ced4, #a2b4f8);
 }
 
+.container {
+  padding-top: 40px;
+}
+
 .button {
   border-radius: 100px;
 }
@@ -52,6 +56,8 @@ img {
   align-items: center;
 }
 
+/* Users
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .users-container {
   margin-top: 20px;
   display: flex;
@@ -60,6 +66,7 @@ img {
   align-items: center;
 }
 .user-block {
+  text-align: center;
   color: white;
   border-radius: 10px;
   margin-top: 20px;
@@ -69,6 +76,14 @@ img {
 
 .user-block h4 {
   overflow-wrap: break-word;
+}
+
+.user-block .twitter, .user-block .discord {
+  width: 20px;
+}
+
+.user-edit img {
+  max-width: 200px;
 }
 
  *= require_tree .

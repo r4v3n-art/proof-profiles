@@ -30,9 +30,19 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  actions:
+    update: 'Update'
+    back: 'Back'
+  general:
+    logged_in: 'Logged in as:'
   errors:
     invalid_eth_address: 'must be a valid ETH address'
   prompts:
+    edit_profile: 'Edit Profile'
+    logout: 'Log out'
     user:
       pfp: 'Profile Picture (Real picture if your comfortable)'
       bio: 'About (140 Characters Max)'
+      name: 'Name'
+      twitter_username: 'Twitter Username'
+      discord_username: 'Discord Username'

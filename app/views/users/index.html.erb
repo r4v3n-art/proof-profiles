@@ -1,19 +1,31 @@
 <h1>Members</h1>
-<%= link_to 'Edit Profile', edit_user_path(current_user.eth_address) %>
-<%= link_to 'Log out', sessions_path, data: { turbo_method: :delete } %>
+<span><%= "#{t('general.logged_in')} #{name_or_address(current_user)}" %></span>
+<%= link_to t('prompts.edit_profile'), edit_user_path(current_user.eth_address) %>
+<%= link_to t('prompts.logout'), sessions_path, data: { turbo_method: :delete } %>
 <div class='users-container row'>
   <% @users.each do |user| %>
-    <% 5.times do %>
     <div class='user-block column one-third'>
-        <% if user.pfp.representable? %>
-          <%= image_tag user.pfp.representation(resize_to_limit: [500, 500]) %>
-        <% else %>
-            <%= image_tag 'kro-duck', width: 500 %>
-        <% end %>
-      <h4><%= user.eth_address %></h4>
+      <% if user.pfp.representable? %>
+        <%= image_tag user.pfp.representation(resize_to_limit: [500, 500]) %>
+      <% else %>
+          <%= image_tag 'kro-duck', width: 500 %>
+      <% end %>
+      <h4><%= name_or_address(user) %></h4>
       <p><%= user.bio %></p>
+      <div>
+        <% if user.twitter_username.present? %>
+          <%= link_to image_tag('twitter.svg', class: 'twitter'), "https://www.twitter.com/#{user.twitter_username}" %>
+          <span>@<%= user.twitter_username %></span>
+        <% end %>
+      </div>
+      <div>
+        <% if user.discord_username.present? %>
+          <%= image_tag 'discord.svg', class: 'discord' %>
+          <span><%= user.discord_username %></span>
+        <% end %>
+      </div>
     </div>
   <% end %>
-  <% end %>
+  <%= paginate @users %>
 </div>
 
