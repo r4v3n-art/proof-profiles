@@ -15,6 +15,7 @@ gem "jbuilder"
 gem "redis", "~> 4.0"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
+gem 'money-tree', git: 'https://github.com/GemHQ/money-tree.git'
 gem 'eth', '~> 0.4.17'
 gem 'kaminari'
 
