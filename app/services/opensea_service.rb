@@ -11,15 +11,15 @@ class OpenSeaService
   def get_data_by_address(address:)
     uri = URI('https://api.opensea.io/api/v1/assets')
 
-    nextCursor = ''
-    userAssets = []
+    next_cursor = ''
+    assets = []
 
-    while nextCursor
+    while next_cursor
 
       params = {
         owner: address,
         limit: '50',
-        cursor: nextCursor
+        cursor: next_cursor
       }
 
       uri.query = URI.encode_www_form(params)
@@ -33,17 +33,17 @@ class OpenSeaService
 
       data = JSON.parse(res.body)
 
-      nextCursor = data.dig('next')
-      #prevCursor = data.dig('previous')
+      next_cursor = data['next']
+      #prev_cursor = data['previous']
 
-      assets = data.dig('assets')
+      res_assets = data['assets']
 
-      userAssets += assets
+      assets += res_assets
 
       sleep 0.2
     end
 
-  userAssets
+  assets
   end
 
   private
